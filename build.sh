@@ -1,23 +1,49 @@
 #!/bin/bash
-
 set -ouex pipefail
-
 RELEASE="$(rpm -E %fedora)"
 
 
-### Install packages
+# COPRs
+curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
+  https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# udev rules
+git clone https://codeberg.org/fabiscafe/game-devices-udev /tmp/game-devices-udev
+cp -rfv /tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 
-# this installs a package from fedora repos
-rpm-ostree install screen
 
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
+# added packages
+rpm-ostree install \
+  libvirt-client \
+  qemu-kvm \
+  virt-install \
+  virt-manager \
+  swtpm \
+  tuned \
+  bridge-utils \
+  screen \
+  steam \
+  steam-devices \
+  sunshine \
+  git \
+  stow \
+  android-tools \
+  ImageMagick \
+  ffmpeg
 
-#### Example for enabling a System Unit File
+# removed packages
+#rpm-ostree override remove
 
+
+# systemd services
+systemctl disable libvirt.service
+systemctl disable libvirt.socket
+for drv in qemu network nodedev nwfilter secret storage
+do
+  systemctl enable virt${drv}d.service
+  systemctl enable virt${drv}d{,-ro,-admin}.socket
+done
 systemctl enable podman.socket
+
+
+#rm /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
