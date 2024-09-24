@@ -33,8 +33,8 @@ rpm-ostree install steam \
   scrcpy
 
 # systemd services
-systemctl disable libvirt.service
-#systemctl disable libvirt.socket
+systemctl disable libvirtd.service
+systemctl disable libvirtd.socket
 for drv in qemu network nodedev nwfilter secret storage
 do
   systemctl enable virt${drv}d.service
