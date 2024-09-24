@@ -13,22 +13,8 @@ cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/ud
 
 
 # added packages
-rpm-ostree install \
-  libvirt-client \
-  qemu-kvm \
-  virt-install \
-  virt-manager \
-  swtpm \
-  tuned \
-  bridge-utils \
-  screen \
-  steam \
-  sunshine \
-  git \
-  stow \
-  android-tools \
-  ImageMagick \
-  ffmpeg
+rpm-ostree refresh-md
+rpm-ostree install tuned steam sunshine android-tools
 
 # removed packages
 #rpm-ostree override remove
