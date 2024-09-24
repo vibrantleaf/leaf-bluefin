@@ -41,7 +41,8 @@ rpm-ostree override remove \
  docker-ce \
  docker-ce-cli \
  docker-buildx-plugin \
- docker-compose-plugin
+ docker-compose-plugin \
+ docker-ce-rootless-extras
  
 
 # systemd services
