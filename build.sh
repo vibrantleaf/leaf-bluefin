@@ -41,6 +41,9 @@ do
   systemctl enable virt${drv}d{,-ro,-admin}.socket
 done
 systemctl enable podman.socket
+systemctl disable docker.service
+systemctl disable docker.socket
+
 
 # udev rules
 git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
