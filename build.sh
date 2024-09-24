@@ -7,8 +7,8 @@ RELEASE="$(rpm -E %fedora)"
 curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
   https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
 
-rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${REALEASE}.noarch.rpm
-rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
+rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm
+rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$RELEASE}.noarch.rpm
 rpm-ostree install rpmfusion-free-tainted
 rpm-ostree install rpmfusion-nonfree-tainted
 
