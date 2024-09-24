@@ -16,7 +16,13 @@ sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.rep
 sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 
 # adding packages
-rpm-ostree install steam \
+rpm-ostree install \
+  steam \
+  qt5-qtbase \
+  mangohud \
+  gamescope \
+  gamemode \
+  sunshine \
   libvirt-client \
   qemu-kvm \
   virt-install \
@@ -25,18 +31,15 @@ rpm-ostree install steam \
   swtpm \
   tuned \
   bridge-utils \
-  mangohud \
-  gamescope \
-  gamemode \
-  sunshine \
   android-tools \
   scrcpy
 
 # remove unwanted packages
 rpm-ostree override remove \
  gnome-shell-extension-search-light \
- yaru-theme \
+ gnome-classic-session \
  gnome-shell-extension-logo-menu \
+ yaru-theme \
  containerd.io \
  docker-ce \
  docker-ce-cli \
