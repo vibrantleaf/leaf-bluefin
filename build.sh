@@ -32,13 +32,15 @@ rpm-ostree install \
   tuned \
   bridge-utils \
   android-tools \
-  scrcpy
+  scrcpy \
+  gnome-shell-extension-caffeine 
 
 # remove unwanted packages
 rpm-ostree override remove \
  gnome-shell-extension-search-light \
- gnome-classic-session \
  gnome-shell-extension-logo-menu \
+ gnome-classic-session \
+ gnome-classic-session-xsession \
  yaru-theme \
  containerd.io \
  docker-ce \
