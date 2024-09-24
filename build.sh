@@ -8,8 +8,8 @@ curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
   https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
 
 # udev rules
-git clone https://codeberg.org/fabiscafe/game-devices-udev /tmp/game-devices-udev
-cp -rfv /tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
+git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
+cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 
 
 # added packages
