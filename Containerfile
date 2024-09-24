@@ -16,6 +16,4 @@ RUN mkdir -p /var/lib/alternatives && \
 RUN rm -rf /var/cache/* && \
     rm -rf /var/tmp/* && \
     rm -f /tmp/build.sh && \
-    /usr/libexec/containerbuild/cleanup.sh && \
-    rm -f /usr/libexec/containerbuild/cleanup.sh && \
     ostree container commit

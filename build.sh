@@ -3,56 +3,38 @@ set -ouex pipefail
 RELEASE="$(rpm -E %fedora)"
 
 
-# COPRs & RPM repos
+# setup COPRs & RPM repos
 curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
   https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
+curl -Lo etc/yum.repos.d/_copr_zeno-scrcpy.repo \
+  https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-${RELEASE}/zeno-scrcpy-fedora-${RELEASE}.repo
+sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 
-#rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm
-#rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$RELEASE}.noarch.rpm
-#rpm-ostree install rpmfusion-free-tainted
-#rpm-ostree install rpmfusion-nonfree-tainted
-
-sed -i 'enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion*
-
-# udev rules
-git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
-cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
-
-
-
-# codecs
-#rpm-ostree install \
-#  gstreamer1-plugin-libav \
-#  gstreamer1-plugins-bad-free-extras \
-#  gstreamer1-plugins-bad-freeworld \
-#  gstreamer1-plugins-ugly \
-#  gstreamer1-vaapi
-
-#rpm-ostree override remove \
-#  libavcodec-free \
-#  libavfilter-free \
-#  libavformat-free \
-#  libavutil-free \
-#  libpostproc-free \
-#  libswresample-free \
-#  libswscale-free --install ffmpeg
-
-#rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
-#rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
-
-
-# added packages
-rpm-ostree install steam
-rpm-ostree install sunshine
-rpm-ostree install android-tools
-
-# removed packages
-#rpm-ostree override remove
-
+# adding packages
+rpm-ostree install steam \
+  libvirt-client \
+  qemu-kvm \
+  virt-install \
+  virt-manager \
+  swtpm \
+  tuned \
+  bridge-utils \
+  mangohud \
+  gamescope \
+  gamemode \
+  sunshine \
+  android-tools \
+  scrcpy
 
 # systemd services
 systemctl disable libvirt.service
-systemctl disable libvirt.socket
+#systemctl disable libvirt.socket
 for drv in qemu network nodedev nwfilter secret storage
 do
   systemctl enable virt${drv}d.service
@@ -60,5 +42,19 @@ do
 done
 systemctl enable podman.socket
 
+# udev rules
+git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
+cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 
-#rm /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
+rpm-ostree install openrgb-udev-rules
+
+# disable COPRs & RPM repos for release
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
