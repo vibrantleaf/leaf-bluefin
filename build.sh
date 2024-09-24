@@ -13,8 +13,9 @@ cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/ud
 
 
 # added packages
-rpm-ostree refresh-md
-rpm-ostree install tuned steam sunshine android-tools
+rpm-ostree install steam
+rpm-ostree install sunshine
+rpm-ostree install android-tools
 
 # removed packages
 #rpm-ostree override remove
