@@ -23,7 +23,6 @@ rpm-ostree install \
   bridge-utils \
   screen \
   steam \
-  steam-devices \
   sunshine \
   git \
   stow \
