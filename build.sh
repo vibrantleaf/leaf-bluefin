@@ -2,7 +2,6 @@
 set -ouex pipefail
 RELEASE="$(rpm -E %fedora)"
 
-
 # setup COPRs & RPM repos
 curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
   https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
@@ -22,6 +21,7 @@ rpm-ostree install steam \
   qemu-kvm \
   virt-install \
   virt-manager \
+  edk2-ovmf \
   swtpm \
   tuned \
   bridge-utils \
@@ -32,6 +32,18 @@ rpm-ostree install steam \
   android-tools \
   scrcpy
 
+# remove unwanted packages
+rpm-ostree override remove \
+ gnome-shell-extension-search-light \
+ yaru-theme \
+ gnome-shell-extension-logo-menu \
+ containerd.io \
+ docker-ce \
+ docker-ce-cli \
+ docker-buildx-plugin \
+ docker-compose-plugin
+ 
+
 # systemd services
 systemctl disable libvirtd.service
 systemctl disable libvirtd.socket
@@ -41,8 +53,8 @@ do
   systemctl enable virt${drv}d{,-ro,-admin}.socket
 done
 systemctl enable podman.socket
-systemctl disable docker.service
-systemctl disable docker.socket
+#systemctl disable docker.service
+#systemctl disable docker.socket
 
 
 # udev rules
