@@ -1,5 +1,5 @@
 # Purpose
-i like bluefin i just wanted to change a couple of extra nice little things:3
+i like bluefin i just wanted to change a couple of little things & and add a few nice extras :3
 
 #### rebase via rpm-ostree
 ```sh
