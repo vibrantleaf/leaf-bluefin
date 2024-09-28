@@ -19,8 +19,7 @@ sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-t
 rpm-ostree install \
   steam \
   qt5-qtbase \
-  libva.x86_64 \
-  libva.i686 \
+  libva \
   mangohud \
   gamescope \
   gamemode \
