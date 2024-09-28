@@ -18,7 +18,10 @@ sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-t
 # adding packages
 rpm-ostree install \
   steam \
-  qt5-qtbase \
+  qt5-qtbase.x86_64 \
+  qt5-qtbase.i686 \
+  libva.x86_64 \
+  libva.i686 \
   mangohud \
   gamescope \
   gamemode \
