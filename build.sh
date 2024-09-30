@@ -15,6 +15,20 @@ sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-test
 sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 
+# remove unwanted packages
+rpm-ostree override remove \
+ gnome-shell-extension-search-light \
+ gnome-shell-extension-logo-menu \
+ gnome-classic-session \
+ gnome-classic-session-xsession \
+ yaru-theme \
+ containerd.io \
+ docker-ce \
+ docker-ce-cli \
+ docker-buildx-plugin \
+ docker-compose-plugin \
+ docker-ce-rootless-extras
+
 # adding packages
 rpm-ostree install \
   steam \
@@ -36,22 +50,9 @@ rpm-ostree install \
   bridge-utils \
   android-tools \
   scrcpy \
-  gnome-shell-extension-caffeine 
-
-# remove unwanted packages
-rpm-ostree override remove \
- gnome-shell-extension-search-light \
- gnome-shell-extension-logo-menu \
- gnome-classic-session \
- gnome-classic-session-xsession \
- yaru-theme \
- containerd.io \
- docker-ce \
- docker-ce-cli \
- docker-buildx-plugin \
- docker-compose-plugin \
- docker-ce-rootless-extras
- 
+  gnome-shell-extension-caffeine \
+  podman-docker \
+  podman-compose
 
 # systemd services
 systemctl disable libvirtd.service
