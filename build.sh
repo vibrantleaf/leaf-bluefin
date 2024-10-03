@@ -52,7 +52,8 @@ rpm-ostree install \
   scrcpy \
   gnome-shell-extension-caffeine \
   podman-docker \
-  podman-compose
+  podman-compose \
+  waydroid
 
 # systemd services
 systemctl disable libvirtd.service
