@@ -20,9 +20,6 @@ sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 # disable testing repos & coprs
 sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
-# get rpmfusion tainted repos
-rpm-ostree install rpmfusion-free-release-tainted
-rpm-ostree install rpmfusion-nonfree-release-tainted
 
 # insure rpm-fussion codecs are installed
 rpm-ostree override remove \
@@ -122,5 +119,3 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
