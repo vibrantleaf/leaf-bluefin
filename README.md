@@ -5,7 +5,7 @@ i like bluefin i just wanted to change a couple of little things & and add a few
 ```sh
 # verify the container's signiture is correct
 wget -O /tmp/leaf-bluefin-cosign.pub https://raw.githubusercontent.com/vibrantleaf/leaf-bluefin/refs/heads/main/cosign.pub
-cosign verify --key /tmp/leaf-bluefin-cosign.pub  ghcr.io/vibrantleaf/leaf-bluefin:latest
+cosign verify --key /tmp/leaf-bluefin-cosign.pub ghcr.io/vibrantleaf/leaf-bluefin:latest
 rm /tmp/leaf-bluefin-cosign.pub
 
 # rebase
