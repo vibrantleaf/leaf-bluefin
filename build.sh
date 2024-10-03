@@ -23,8 +23,6 @@ sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testi
 # get rpmfusion tainted repos
 rpm-ostree install rpmfusion-free-release-tainted
 rpm-ostree install rpmfusion-nonfree-release-tainted
-#sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
-#sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
 
 # insure rpm-fussion codecs are installed
 rpm-ostree install \
@@ -87,17 +85,15 @@ do
   systemctl enable virt${drv}d{,-ro,-admin}.socket
 done
 systemctl enable podman.socket
-#systemctl disable docker.service
-#systemctl disable docker.socket
 
 # udev rules
 git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
 cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
-
 git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-udev
 cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
-
-rpm-ostree install openrgb-udev-rules steam-devices
+rpm-ostree install \
+  openrgb-udev-rules \
+  steam-devices
 
 # disable COPRs & RPM repos for release
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
@@ -110,5 +106,3 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
-#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
-#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
