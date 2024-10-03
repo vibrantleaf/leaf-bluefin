@@ -29,7 +29,6 @@ sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testi
 #  mesa-vdpau-drivers \
 #  --install mesa-vdpau-drivers-freeworld
 rpm-ostree override remove \
-  libavcodec-free \
   libavfilter-free \
   libavformat-free \
   libavutil-free \
