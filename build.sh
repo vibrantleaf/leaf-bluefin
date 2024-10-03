@@ -28,13 +28,6 @@ sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testi
 #rpm-ostree override remove \
 #  mesa-vdpau-drivers \
 #  --install mesa-vdpau-drivers-freeworld
-rpm-ostree install \
-  libdvdcss \
-  gstreamer1-plugin-libav \
-  gstreamer1-plugins-bad-free-extras \
-  gstreamer1-plugins-bad-freeworld \
-  gstreamer1-plugins-ugly \
-  gstreamer1-vaapi \
 rpm-ostree override remove \
   libavcodec-free \
   libavfilter-free \
@@ -42,8 +35,15 @@ rpm-ostree override remove \
   libavutil-free \
   libpostproc-free \
   libswresample-free \
-  libswscale-free \
-  --install ffmpeg
+  libswscale-free
+rpm-ostree install \
+  libdvdcss \
+  gstreamer1-plugin-libav \
+  gstreamer1-plugins-bad-free-extras \
+  gstreamer1-plugins-bad-freeworld \
+  gstreamer1-plugins-ugly \
+  gstreamer1-vaapi \
+  ffmpeg
 
 # remove unwanted packages
 rpm-ostree override remove \
