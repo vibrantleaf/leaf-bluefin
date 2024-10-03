@@ -110,5 +110,5 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
+#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
+#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
