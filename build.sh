@@ -31,6 +31,10 @@ rpm-ostree override remove \
 
 # adding packages
 rpm-ostree install \
+  gnome-shell-extension-caffeine \
+  podman-docker \
+  podman-compose \
+  corectl \
   steam \
   qt5-qtbase.x86_64 \
   qt5-qtbase.i686 \
@@ -50,9 +54,6 @@ rpm-ostree install \
   bridge-utils \
   android-tools \
   scrcpy \
-  gnome-shell-extension-caffeine \
-  podman-docker \
-  podman-compose \
   waydroid
 
 # systemd services
