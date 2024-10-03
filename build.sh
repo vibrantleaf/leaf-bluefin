@@ -3,17 +3,23 @@ set -ouex pipefail
 RELEASE="$(rpm -E %fedora)"
 
 # setup COPRs & RPM repos
+# get new repos & coprs
 curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
   https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
-curl -Lo etc/yum.repos.d/_copr_zeno-scrcpy.repo \
+curl -Lo /etc/yum.repos.d/_copr_zeno-scrcpy.repo \
   https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-${RELEASE}/zeno-scrcpy-fedora-${RELEASE}.repo
-sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-free.repo
-sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-free-updates.repo
-sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-nonfree.repo
-sed -i '0,/enabled=1/s//enabled=0/' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+# enable repos & coprs
+sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo 
+sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
+sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
+sed -i 's@enabled=1@enabled=1@g' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i 's@enabled=1@enabled=1@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i 's@enabled=1@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i 's@enabled=1@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+# disable testing repos & coprs
+sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 
 # remove unwanted packages
 rpm-ostree override remove \
@@ -52,6 +58,7 @@ rpm-ostree install \
   swtpm \
   tuned \
   bridge-utils \
+  duperemove \
   android-tools \
   scrcpy \
   waydroid
@@ -73,15 +80,19 @@ systemctl enable podman.socket
 git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
 cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 
+git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-udev
+cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
+
 rpm-ostree install openrgb-udev-rules
 
 # disable COPRs & RPM repos for release
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
-sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
