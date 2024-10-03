@@ -34,7 +34,7 @@ rpm-ostree install \
   gnome-shell-extension-caffeine \
   podman-docker \
   podman-compose \
-  corectl \
+  corectrl \
   steam \
   qt5-qtbase.x86_64 \
   qt5-qtbase.i686 \
