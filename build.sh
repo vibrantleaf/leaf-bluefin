@@ -23,8 +23,8 @@ sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testi
 # get rpmfusion tainted repos
 rpm-ostree install rpmfusion-free-release-tainted
 rpm-ostree install rpmfusion-nonfree-release-tainted
-sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
-sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
+#sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
+#sed -i 's@enabled=0@enabled1@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
 
 # insure rpm-fussion codecs are installed
 rpm-ostree install \
