@@ -97,7 +97,7 @@ cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/ud
 git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-udev
 cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 
-rpm-ostree install openrgb-udev-rules
+rpm-ostree install openrgb-udev-rules steam-devices
 
 # disable COPRs & RPM repos for release
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
