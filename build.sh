@@ -22,19 +22,6 @@ sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.
 sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 
 # insure rpm-fussion codecs are installed
-#rpm-ostree override remove \
-#  mesa-va-drivers \
-#  --install mesa-va-drivers-freeworld
-#rpm-ostree override remove \
-#  mesa-vdpau-drivers \
-#  --install mesa-vdpau-drivers-freeworld
-rpm-ostree override remove \
-  libavfilter-free \
-  libavformat-free \
-  libavutil-free \
-  libpostproc-free \
-  libswresample-free \
-  libswscale-free
 rpm-ostree install \
   libdvdcss \
   gstreamer1-plugin-libav \
