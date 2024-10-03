@@ -1,5 +1,5 @@
 # Purpose
-i like bluefin i just wanted to change a couple of little things & and add a few nice extras :3
+I like bluefin, I just wanted to change a couple of little things and add a few nice extras.
 
 #### how to rebase via rpm-ostree
 ```sh
@@ -11,3 +11,5 @@ rm /tmp/leaf-bluefin-cosign.pub
 # rebase to the image
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-bluefin:latest
 ```
+
+:3
