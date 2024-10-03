@@ -20,6 +20,33 @@ sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 # disable testing repos & coprs
 sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+# get rpmfusion tainted repos
+rpm-ostree install rpmfusion-free-release-tainted
+rpm-ostree install rpmfusion-nonfree-release-tainted
+
+# insure rpm-fussion codecs are installed
+rpm-ostree override remove \
+  mesa-va-drivers \
+  --install mesa-va-drivers-freeworld
+rpm-ostree override remove \
+  mesa-vdpau-drivers \
+  --install mesa-vdpau-drivers-freeworld
+rpm-ostree install \
+  libdvdcss \
+  gstreamer1-plugin-libav \
+  gstreamer1-plugins-bad-free-extras \
+  gstreamer1-plugins-bad-freeworld \
+  gstreamer1-plugins-ugly \
+  gstreamer1-vaapi \
+rpm-ostree override remove \
+  libavcodec-free \
+  libavfilter-free \
+  libavformat-free \
+  libavutil-free \
+  libpostproc-free \
+  libswresample-free \
+  libswscale-free \
+  --install ffmpeg
 
 # remove unwanted packages
 rpm-ostree override remove \
@@ -75,7 +102,6 @@ systemctl enable podman.socket
 #systemctl disable docker.service
 #systemctl disable docker.socket
 
-
 # udev rules
 git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev
 cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
@@ -96,3 +122,5 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-release-tainted.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-release-tainted.repo
