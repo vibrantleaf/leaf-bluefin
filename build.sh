@@ -59,10 +59,8 @@ rpm-ostree install \
 # gameing
 rpm-ostree install \
   steam \
-  qt5-qtbase.x86_64 \
-  qt5-qtbase.i686 \
-  libva.x86_64 \
-  libva.i686 \
+  qt5-qtbase \
+  libva \
   mangohud \
   gamescope \
   gamemode \
