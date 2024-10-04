@@ -126,18 +126,14 @@ rpm-ostree install \
   podman-docker \
   podman-compose \
   duperemove \
-  corectrl
-# gameing
-rpm-ostree install \
+  corectrl \
   steam \
   qt5-qtbase \
   libva \
   mangohud \
   gamescope \
   gamemode \
-  sunshine
-# virtualization 
-rpm-ostree install \
+  sunshine \
   libvirt-client \
   qemu-kvm \
   libvirt-daemon-kvm \
@@ -149,9 +145,7 @@ rpm-ostree install \
   virt-top \
   libguestfs-tools \
   tuned \
-  bridge-utils
-# misc
-rpm-ostree install \
+  bridge-utils\
   android-tools \
   scrcpy \
   waydroid
