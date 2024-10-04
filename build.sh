@@ -120,7 +120,6 @@ rpm-ostree override remove \
  docker-ce-rootless-extras
 
 # adding packages
-# system
 rpm-ostree install \
   gnome-shell-extension-caffeine \
   podman-docker \
