@@ -49,11 +49,15 @@ rpm-ostree override remove \
  docker-ce-rootless-extras
 
 # adding packages
+# system
 rpm-ostree install \
   gnome-shell-extension-caffeine \
   podman-docker \
   podman-compose \
-  corectrl \
+  duperemove \
+  corectrl
+# gameing
+rpm-ostree install
   steam \
   qt5-qtbase.x86_64 \
   qt5-qtbase.i686 \
@@ -62,7 +66,9 @@ rpm-ostree install \
   mangohud \
   gamescope \
   gamemode \
-  sunshine \
+  sunshine
+# virtualization 
+rpm-ostree install \
   libvirt-client \
   qemu-kvm \
   libvirt-daemon-kvm \
@@ -73,10 +79,10 @@ rpm-ostree install \
   swtpm \
   virt-top \
   libguestfs-tools \
-  python3-libguestfs \
   tuned \
-  bridge-utils \
-  duperemove \
+  bridge-utils
+# misc
+rpm-ostree install \
   android-tools \
   scrcpy \
   waydroid
