@@ -57,7 +57,7 @@ rpm-ostree install \
   duperemove \
   corectrl
 # gameing
-rpm-ostree install
+rpm-ostree install \
   steam \
   qt5-qtbase.x86_64 \
   qt5-qtbase.i686 \
