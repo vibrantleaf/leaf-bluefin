@@ -9,17 +9,17 @@ curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
 curl -Lo /etc/yum.repos.d/_copr_zeno-scrcpy.repo \
   https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-${RELEASE}/zeno-scrcpy-fedora-${RELEASE}.repo
 # enable repos & coprs
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo 
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-free.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
-sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo 
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/fedora-cisco-openh264.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 # disable testing repos & coprs
-sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
-sed -i 's@enabled=1@enabled0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 # get rpmfusion tainted repos
 rpm-ostree install rpmfusion-free-release-tainted
 rpm-ostree install rpmfusion-nonfree-release-tainted
@@ -96,13 +96,13 @@ rpm-ostree install \
   steam-devices
 
 # disable COPRs & RPM repos for release
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/fedora-cisco-openh264.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/_copr_zeno-scrcpy.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+sed -i '0,/enabled=1/s//enabled=0' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
