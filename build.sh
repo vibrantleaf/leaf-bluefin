@@ -104,6 +104,11 @@ rpm-ostree install \
   openrgb-udev-rules \
   steam-devices
 
+
+# add custom .just files to the justfile
+echo 'import "/usr/share/ublue-os/just/95-setup-waydroid.just"' | tee -a /usr/share/ublue-os/justfile
+
+
 # disable COPRs & RPM repos for release
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo
