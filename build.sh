@@ -126,9 +126,8 @@ rpm-ostree install \
   podman-compose \
   duperemove \
   corectrl \
-  steam \
   qt5-qtbase \
-  libva \
+  qt6ct \
   mangohud \
   gamescope \
   gamemode \
@@ -148,6 +147,7 @@ rpm-ostree install \
   android-tools \
   scrcpy \
   waydroid
+  #  steam \
 
 # systemd services
 systemctl disable libvirtd.service
