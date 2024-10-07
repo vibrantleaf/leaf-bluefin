@@ -1,6 +1,16 @@
 #!/bin/bash
 set -ouex pipefail
+RELEASE="$(rpm -E %fedora)"
 
+# setup COPRs & RPM repos
+# get new repos & coprs
+curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
+  https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-${RELEASE}/matte-schwartz-sunshine-fedora-${RELEASE}.repo
+curl -Lo /etc/yum.repos.d/_copr_zeno-scrcpy.repo \
+  https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-${RELEASE}/zeno-scrcpy-fedora-${RELEASE}.repo
+
+# enable repos & coprs
+# copr: matte-schwartz/sunshine
 if [ -f /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo ]
 then
   sed -i '0,/enabled=0/s//enabled=1/' /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo 
