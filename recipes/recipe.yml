@@ -147,7 +147,7 @@ modules:
       - solaar-udev
   
 # fonts
- - type: fonts:
+ - type: fonts
     nerd-fonts:
       - JetBrainsMono
 
