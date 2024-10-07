@@ -4,15 +4,18 @@ base-image: ghcr.io/ublue-os/bluefin-dx
 image-version: latest
 
 modules:
+
+ # copy files to the image
   - type: files
     files:
       - source: system
         destination: /
-        
+# setup copr & rpm repos for build
   - type: script
     scripts:
       - setup_repos.sh
       
+# removed packages
   - type: rpm-ostree
     remove:
       - gnome-shell-extension-search-light
@@ -26,6 +29,9 @@ modules:
       - docker-buildx-plugin
       - docker-compose-plugin
       - docker-ce-rootless-extras
+      
+# added packages
+  - type: rpm-ostree
     install:
       - gnome-shell-extension-caffeine
       - podman-docker
@@ -53,25 +59,99 @@ modules:
       - android-tools
       - scrcpy
       - waydroid
-    
+  
+# make sure codecs are installed    
+  - type: rpm-ostree
+    install:
+      - libdvdcss
+      - gstreamer1-plugin-libav
+      - gstreamer1-plugins-bad-free-extra
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-ugly
+      - gstreamer1-vaapi
+      - ffmpeg
+
+# flathub
   - type: default-flatpaks
     notify: true 
     system:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
       repo-title: "Flathub (System)"
-      install:
 
-      remove:
-      
+# install flatpaks
   - type: yafti
     custom-flatpaks:
       - FireFox: org.mozilla.firefox
       - LibreOffice: org.libreoffice.libreoffice
       - ThunderBird: org.mozilla.Thunderbird
-    
+
+# libvirt service
+  - type: systemd
+  system:
+    disabled:
+      - libvirtd.service
+      - libvirtd.socket
+    enabled:
+     - virtqemud.service
+     - virtqemud.socket
+     - virtqemud-ro.socket
+     - virtqemud-admin.socket
+     - virtnetworkd.service
+     - virtnetworkd.socket
+     - virtnetworkd-ro.socket
+     - virtnetworkd-admin.socket
+     - virtnodedevd.service
+     - virtnodedevd.socket
+     - virtnodedevd-ro.socket
+     - virtnodedevd-admin.socket
+     - virtnwfilterd.service
+     - virtnwfilterd.socket
+     - virtnwfilterd-ro.socket
+     - virtnwfilterd-admin.socket
+     - virtsecretd.service
+     - virtsecretd.socket
+     - virtsecretd-ro.socket
+     - virtsecretd-admin.socket
+     - virtstoraged.service
+     - virtstoraged.socket
+     - virtstoraged-ro.socket
+     - virtstoraged-admin.socket
+     
+# podman socket
+  - type: systemd
+    enabled:
+      - podman.socket
+# udev-rules
+  - type: script
+    snippets: 
+      - "git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev"
+      - "git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-udev"
+      - "cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d"
+      - "cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d"
+  - type: rpm-ostree
+    install:
+      - openrgb-udev-rules
+      - steam-devices
+      - solaar-udev
+  
+# gnome extentions
+  - type: gnome-extensions
+    install:
+      - 4655 # Date Menu Formatter
+      - 6784 # Wiggle
+      - 3733 # Tiling Assistant
+      - 5547 # Custom Accent Colors
+
+# gnome-settings
+  - type: gschema-overrides
+    include:
+      - gnome_settings.overrides
+
+# unsetup copr & rpm repos for release
   - type: script
     scripts:
       - unsetup_repos.sh
-      
+
+# sign the image
   - type: signing
