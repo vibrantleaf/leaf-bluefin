@@ -31,7 +31,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-blu
 - sunshine: i find this really useful
 - android-tools & scrcpy: for conntroling android devices
 - waydroid: android app compatibility
-- ~steam: tends to have better compatabilty compared to the flatpak~ (temporarily removed due to a depenacy bug)
+- ~steam: tends to have better compatabilty compared to the flatpak~ (temporarily removed due to a dependency bug)
 - gamemode , gamescope , qt5-base & mangohud: for gaming stuff 
 - All gstreamer media codecs: for wider media file support
 - libdvdcss: for dvd/bluray playback support
