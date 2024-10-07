@@ -148,13 +148,14 @@ modules:
   
 # fonts
  - type: fonts
-    nerd-fonts:
-      - JetBrainsMono
+   fonts:
+     nerd-fonts:
+       - JetBrainsMono
 
 - type: justfiles
   validate: true
   include:
-    -
+    - 95-setup-waydroid.just
 
 # gnome extentions
   - type: gnome-extensions
