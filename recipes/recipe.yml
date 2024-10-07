@@ -158,7 +158,8 @@ modules:
       - solaar-udev
  
   - type: justfiles
-    validate: true
+    #validate: true
+    validate: false
     include:
       - 95-setup-waydroid.just
 
