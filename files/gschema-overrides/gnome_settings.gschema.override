@@ -49,3 +49,14 @@ always-center-icons=true
 click-action='previews'
 dock-fixed=true
 dock-position='BOTTOM'
+
+
+[org.gnome.desktop.interface]
+font-name='Inter Variable 12'
+document-font-name='Inter Variable 12'
+monospace-font-name 'JetBrains Mono NF 18'
+
+font-antialiasing 'rgba'
+font-hinting 'slight'
+font-rgba-order 'rgb'
+text-scaling-factor='1.0'

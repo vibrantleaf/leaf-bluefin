@@ -29,6 +29,7 @@ modules:
       - docker-buildx-plugin
       - docker-compose-plugin
       - docker-ce-rootless-extras
+      - devpod
       
 # added packages
   - type: rpm-ostree
@@ -37,7 +38,8 @@ modules:
       - podman-docker
       - podman-compose
       - duperemove
-      - corectrl 
+      - corectrl
+      - steam
       - qt5-qtbase
       - qt6ct
       - mangohud
@@ -86,6 +88,9 @@ modules:
       - FireFox: org.mozilla.firefox
       - LibreOffice: org.libreoffice.libreoffice
       - ThunderBird: org.mozilla.Thunderbird
+      - LocalSend: org.localsend.localsend_app
+      - Collision: dev.geopjr.Collision
+      - Secrets: org.gnome.World.Secrets
 
 # libvirt service
   - type: systemd
@@ -121,9 +126,13 @@ modules:
      
 # podman socket
   - type: systemd
+   system:
+     enabled:
+       podman.socket
     user:
       enabled:
         - podman.socket
+
 # udev-rules
   - type: script
     snippets: 
@@ -137,6 +146,16 @@ modules:
       - steam-devices
       - solaar-udev
   
+# fonts
+ - type: fonts:
+    nerd-fonts:
+      - JetBrainsMono
+
+- type: justfiles
+  validate: true
+  include:
+    -
+
 # gnome extentions
   - type: gnome-extensions
     install:
