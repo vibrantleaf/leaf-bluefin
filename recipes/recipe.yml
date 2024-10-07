@@ -148,7 +148,7 @@ modules:
 # gnome-settings
   - type: gschema-overrides
     include:
-      - gnome_settings.overrides
+      - gnome_settings.gschema.override
 
 # unsetup copr & rpm repos for release
   - type: script
