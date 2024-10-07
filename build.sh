@@ -166,7 +166,8 @@ git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-ud
 cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d
 rpm-ostree install \
   openrgb-udev-rules \
-  steam-devices
+  steam-devices \
+  solaar-udev
 
 # add custom .just files to the justfile
 if [ -f /usr/share/ublue-os/just/95-setup-waydroid.just ]
