@@ -9,7 +9,7 @@ curl -Lo /etc/yum.repos.d/_copr_matte-schwartz_sunshine.repo \
 curl -Lo /etc/yum.repos.d/_copr_zeno-scrcpy.repo \
   https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-${RELEASE}/zeno-scrcpy-fedora-${RELEASE}.repo
 
-rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release.${RELEASE}rpm.noarch.rpm \
+rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release.${RELEASE}.noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
 
 # enable repos & coprs
