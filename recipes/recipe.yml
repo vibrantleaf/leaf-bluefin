@@ -147,10 +147,10 @@ modules:
       - steam-devices
       - solaar-udev
  
-- type: justfiles
-  validate: true
-  include:
-    - 95-setup-waydroid.just
+  - type: justfiles
+    validate: true
+    include:
+      - 95-setup-waydroid.just
 
 # gnome extentions
   - type: gnome-extensions
