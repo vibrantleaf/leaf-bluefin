@@ -54,7 +54,7 @@ dock-position='BOTTOM'
 [org.gnome.desktop.interface]
 font-name='Inter Variable 12'
 document-font-name='Inter Variable 12'
-monospace-font-name 'JetBrains Mono NF 18'
+monospace-font-name 'JetBrains Mono 18'
 
 font-antialiasing 'rgba'
 font-hinting 'slight'
