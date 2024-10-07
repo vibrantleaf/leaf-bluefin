@@ -147,10 +147,10 @@ modules:
       - solaar-udev
   
 # fonts
- - type: fonts
-   fonts:
-     nerd-fonts:
-       - JetBrainsMono
+- type: fonts
+  fonts:
+    nerd-fonts:
+      - JetBrainsMono
 
 - type: justfiles
   validate: true
