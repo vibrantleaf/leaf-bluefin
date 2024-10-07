@@ -126,9 +126,9 @@ modules:
      
 # podman socket
   - type: systemd
-   system:
-     enabled:
-       podman.socket
+    system:
+      enabled:
+       - podman.socket
     user:
       enabled:
         - podman.socket
