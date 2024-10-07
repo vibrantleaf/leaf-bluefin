@@ -92,31 +92,31 @@ modules:
        disabled:
          - libvirtd.service
           - libvirtd.socket
-      enabled:
-       - virtqemud.service
-       - virtqemud.socket
-       - virtqemud-ro.socket
-       - virtqemud-admin.socket
-       - virtnetworkd.service
-       - virtnetworkd.socket
-       - virtnetworkd-ro.socket
-       - virtnetworkd-admin.socket
-       - virtnodedevd.service
-       - virtnodedevd.socket
-       - virtnodedevd-ro.socket
-       - virtnodedevd-admin.socket
-       - virtnwfilterd.service
-       - virtnwfilterd.socket
-       - virtnwfilterd-ro.socket
-       - virtnwfilterd-admin.socket
-       - virtsecretd.service
-       - virtsecretd.socket
-       - virtsecretd-ro.socket
-       - virtsecretd-admin.socket
-       - virtstoraged.service
-       - virtstoraged.socket
-       - virtstoraged-ro.socket
-       - virtstoraged-admin.socket
+        enabled:
+         - virtqemud.service
+         - virtqemud.socket
+         - virtqemud-ro.socket
+         - virtqemud-admin.socket
+         - virtnetworkd.service
+         - virtnetworkd.socket
+         - virtnetworkd-ro.socket
+         - virtnetworkd-admin.socket
+         - virtnodedevd.service
+         - virtnodedevd.socket
+         - virtnodedevd-ro.socket
+         - virtnodedevd-admin.socket
+         - virtnwfilterd.service
+         - virtnwfilterd.socket
+         - virtnwfilterd-ro.socket
+         - virtnwfilterd-admin.socket
+         - virtsecretd.service
+         - virtsecretd.socket
+         - virtsecretd-ro.socket
+         - virtsecretd-admin.socket
+         - virtstoraged.service
+         - virtstoraged.socket
+         - virtstoraged-ro.socket
+         - virtstoraged-admin.socket
      
 # podman socket
   - type: systemd
