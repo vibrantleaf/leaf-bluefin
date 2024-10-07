@@ -12,4 +12,29 @@ rm /tmp/leaf-bluefin-cosign.pub
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-bluefin:latest
 ```
 
+### things i changed & why
+#### Removed:
+- docker: i dont need docker
+- gnome-classic: i dont like gnome-classic
+- yaru-theme: i think it donsent look that nice
+- search-light & logo-menu gnome extentions: i dont need or want them
+#### Added:
+- added the following udev-rule packs
+  - [fabiscafe/game-devices-udev](https://github.com/fabiscafe/game-devices-udev)
+  - [wget/realtek-r8152-linux](https://github.com/wget/realtek-r8152-linux/)
+  - [openrgb-udev-rules](https://packages.fedoraproject.org/pkgs/openrgb/openrgb-udev-rules/)
+  - steam-devices
+  - [solaar-udev](https://packages.fedoraproject.org/pkgs/solaar/solaar-udev/)
+- custom .just files: for some nice shortcuts
+- caffeine gnome-extention: i find this really useful
+- corectrl: for expermenting with uv/oc
+- sunshine: i find this really useful
+- android-tools & scrcpy: for conntroling android devices
+- waydroid: android app compatibility
+- ~steam: tends to have better compatabilty compared to the flatpak~ (temporarily removed due to a depenacy bug)
+- gamemode , gamescope , qt5-base & mangohud: for gaming stuff 
+- All gstreamer media codecs: for wider media file support
+- libdvdcss: for dvd/bluray playback support
+- modular libvirtd systemd services & tuned: for better virtualisaion
+
 :3
