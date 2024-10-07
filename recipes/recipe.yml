@@ -1,49 +1,80 @@
-# image will be published to ghcr.io/<user>/<name>
-name: template
-# description will be included in the image's metadata
-description: This is my personal OS image.
-
-# the base image to build on top of (FROM) and the version tag to use
+name: leaf-bluefin-neo
+description: just my personal bluefin.
 base-image: ghcr.io/ublue-os/bluefin
-image-version: latest # latest is also supported if you want new updates ASAP
+image-version: latest
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-
+        destination: /
+  
+  - type: script
+    scripts:
+      - setup_repos.sh
+      
   - type: rpm-ostree
     repos:
-        - https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-%OS_VERSION%/matte-schwartz-sunshine-fedora-%OS_VERSION%.repo
-        - https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-%OS_VERSION%/zeno-scrcpy-fedora-%OS_VERSION%.repo
-    install:
-      # - micro
-      # - starship
+      - https://copr.fedorainfracloud.org/coprs/matte-schwartz/sunshine/repo/fedora-%OS_VERSION%/matte-schwartz-sunshine-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-%OS_VERSION%/zeno-scrcpy-fedora-%OS_VERSION%.repo
     remove:
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
-      # - firefox
-      # - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
+      - gnome-shell-extension-search-light
+      - gnome-shell-extension-logo-menu
+      - gnome-classic-session
+      - gnome-classic-session-xsession
+      - yaru-theme
+      - containerd.io
+      - docker-ce
+      - docker-ce-cli
+      - docker-buildx-plugin
+      - docker-compose-plugin
+      - docker-ce-rootless-extras
+    install:
+      - gnome-shell-extension-caffeine
+      - podman-docker
+      - podman-compose
+      - duperemove
+      - corectrl 
+      - qt5-qtbase
+      - qt6ct
+      - mangohud
+      - gamescope
+      - gamemode
+      - sunshind
+      - libvirt-client
+      - qemu-kvm
+      - libvirt-daemon-kvm
+      - libvirt-daemon-config-network
+      - virt-install
+      - virt-manager
+      - edk2-ovmf
+      - swtpm
+      - virt-top
+      - libguestfs-tools
+      - tuned
+      - bridge-utils
+      - android-tools
+      - scrcpy
+      - waydroid
+    
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
+    notify: true 
     system:
-      # If no repo information is specified, Flathub will be used by default
-      # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      # repo-name: flathub
-      # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (System)"
       install:
-        # - org.mozilla.firefox
-        # - org.gnome.Loupe
-        # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
-      # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
-      # only normal flatpak applications are (like Floorp Lightning web browser in this example).
-      # Installing different branches of the same Flatpak is not supported.
+
       remove:
-      # - org.gnome.eog
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
-
+      
+  - type: yafti
+    custom-flatpaks:
+      - FireFox: org.mozilla.firefox
+      - LibreOffice: org.libreoffice.libreoffice
+      - ThunderBird: org.mozilla.Thunderbird
+    
+  - type: script
+    scripts:
+      - unsetup_repos.sh
+      
+  - type: signing
