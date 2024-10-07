@@ -10,6 +10,7 @@ modules:
     files:
       - source: system
         destination: /
+
 # setup copr & rpm repos for build
   - type: script
     scripts:
@@ -145,13 +146,7 @@ modules:
       - openrgb-udev-rules
       - steam-devices
       - solaar-udev
-  
-# fonts
-- type: fonts
-  fonts:
-    nerd-fonts:
-      - JetBrainsMono
-
+ 
 - type: justfiles
   validate: true
   include:
