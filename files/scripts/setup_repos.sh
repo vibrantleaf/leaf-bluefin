@@ -81,7 +81,6 @@ then
   sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
 else
   echo 'file /etc/yum.repos.d/rpmfusion-free-updates-testing.repo is missing'
-  exit 1
 fi 
 # rpmfusion-nonfree-updates-testing
 if [ -f /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo ]
@@ -89,7 +88,6 @@ then
   sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
 else
   echo 'file /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo is missing'
-  exit 1
 fi 
 
 # get rpmfusion tainted repos
