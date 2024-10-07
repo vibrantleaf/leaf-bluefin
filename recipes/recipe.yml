@@ -62,14 +62,20 @@ modules:
   
 # make sure codecs are installed    
   - type: rpm-ostree
+    remove:
+      - mesa-va-drivers
+      - mesa-vdpau-driver
     install:
+      - mesa-va-driver-freeworld
+      - mesa-vdpau-driver-freeworld
       - libdvdcss
-      - gstreamer1-plugin-libav
-      - gstreamer1-plugins-bad-free-extra
+      - streamer1-plugin-libav
+      - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
       - gstreamer1-vaapi
       - ffmpeg
+      - libva
 
 # flathub
   - type: default-flatpaks
