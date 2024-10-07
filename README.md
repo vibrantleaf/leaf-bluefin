@@ -12,6 +12,18 @@ rm /tmp/leaf-bluefin-cosign.pub
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-bluefin:latest
 ```
 
+### build localy for a testing
+```sh
+# with podman
+podman build -t leaf-bluefin-test-build:latest .
+
+# or with buildah
+buildah bud -t leaf-bluefin-test-build:latest .
+
+# or with docker 
+docker build -t leaf-bluefin-test-build:latest .
+```
+
 ### things i changed & why
 #### Removed:
 - docker: i dont need docker
