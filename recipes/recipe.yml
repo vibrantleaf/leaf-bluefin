@@ -40,7 +40,6 @@ modules:
       - podman-compose
       - duperemove
       - corectrl
-      - steam
       - qt5-qtbase
       - qt6ct
       - mangohud
@@ -75,6 +74,13 @@ modules:
       - ffmpeg
       - libva
 
+## steam
+#  - type: rpm-ostree
+#    install:
+#      - steam
+# ^^^^
+# remved because of dependency bug 
+
 # flathub
   - type: default-flatpaks
     notify: true 
@@ -92,6 +98,10 @@ modules:
       - LocalSend: org.localsend.localsend_app
       - Collision: dev.geopjr.Collision
       - Secrets: org.gnome.World.Secrets
+      - Steam: com.valvesoftware.Steam
+      - ProtonPlus: com.vysp3r.ProtonPlus
+      - Lutris: net.lutris.Lutris
+      - Flatseal: com.github.tchx84.Flatseal
 
 # libvirt service
   - type: systemd
