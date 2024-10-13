@@ -1,43 +1,55 @@
-# BlueBuild Template &nbsp; [![bluebuild build badge](https://github.com/blue-build/template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/template/actions/workflows/build.yml)
+# Purpose
+I like bluefin, I just wanted to change a couple of little things and add a few nice extras.
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+#### how to rebase via rpm-ostree
+```sh
+# verify the image signiture is correct
+wget -O /tmp/leaf-bluefin-cosign.pub https://raw.githubusercontent.com/vibrantleaf/leaf-bluefin/refs/heads/main/cosign.pub
+cosign verify --key /tmp/leaf-bluefin-cosign.pub ghcr.io/vibrantleaf/leaf-bluefin:latest
+rm /tmp/leaf-bluefin-cosign.pub
 
-After setup, it is recommended you update this README to describe your custom image.
-
-## Installation
-
-> **Warning**  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
-
-To rebase an existing atomic Fedora installation to the latest build:
-
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/template:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/template:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
-
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
-
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
-
-## Verification
-
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
-
-```bash
-cosign verify --key cosign.pub ghcr.io/blue-build/template
+# rebase to the image
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-bluefin:latest
 ```
+
+### build localy for a testing
+```sh
+# with podman
+podman build -t leaf-bluefin-test-build:latest .
+
+# or with buildah
+buildah bud -t leaf-bluefin-test-build:latest .
+
+# or with docker 
+docker build -t leaf-bluefin-test-build:latest .
+```
+
+### things i changed & why
+#### Removed:
+- docker: i dont need docker
+- gnome-classic: i dont like gnome-classic
+- yaru-theme: i think it donsent look that nice
+- search-light & logo-menu gnome extentions: i dont need or want them
+#### Added:
+- added the following udev-rule packs
+  - [fabiscafe/game-devices-udev](https://github.com/fabiscafe/game-devices-udev)
+  - [wget/realtek-r8152-linux](https://github.com/wget/realtek-r8152-linux/)
+  - [openrgb-udev-rules](https://packages.fedoraproject.org/pkgs/openrgb/openrgb-udev-rules/)
+  - steam-devices
+  - [solaar-udev](https://packages.fedoraproject.org/pkgs/solaar/solaar-udev/)
+- custom .just files: for some nice shortcuts
+- caffeine gnome-extention: i find this really useful
+- corectrl: for expermenting with uv/oc
+- sunshine: i find this really useful
+- android-tools & scrcpy: for conntroling android devices
+- waydroid: android app compatibility
+- ~steam: tends to have better compatabilty compared to the flatpak~ (temporarily removed due to a dependency bug)
+- gamemode , gamescope , qt5-base & mangohud: for gaming stuff 
+- All gstreamer media codecs: for wider media file support
+- libdvdcss: for dvd/bluray playback support
+- modular libvirtd systemd services & tuned: for better virtualisaion
+# changed
+- default settings chaged 
+
+
+:3

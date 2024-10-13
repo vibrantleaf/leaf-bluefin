@@ -1,4 +1,4 @@
-name: leaf-bluefin-neo
+name: leaf-bluefin
 description: just my personal bluefin.
 base-image: ghcr.io/ublue-os/bluefin-dx
 image-version: latest
