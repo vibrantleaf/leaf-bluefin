@@ -74,12 +74,10 @@ modules:
       - ffmpeg
       - libva
 
-## steam
-#  - type: rpm-ostree
-#    install:
-#      - steam
-# ^^^^
-# remved because of dependency bug 
+# steam
+  - type: rpm-ostree
+    install:
+      - steam
 
 # flathub
   - type: default-flatpaks
@@ -98,10 +96,10 @@ modules:
       - LocalSend: org.localsend.localsend_app
       - Collision: dev.geopjr.Collision
       - Secrets: org.gnome.World.Secrets
-      - Steam: com.valvesoftware.Steam
       - ProtonPlus: com.vysp3r.ProtonPlus
       - Lutris: net.lutris.Lutris
       - Flatseal: com.github.tchx84.Flatseal
+      #- Steam: com.valvesoftware.Steam
 
 # libvirt service
   - type: systemd
