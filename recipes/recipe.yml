@@ -74,10 +74,12 @@ modules:
       - ffmpeg
       - libva
 
-# steam
-  - type: rpm-ostree
-    install:
-      - steam
+## steam
+#  - type: rpm-ostree
+#    install:
+#      - steam
+# ^^^^
+# remved because of dependency bug 
 
 # flathub
   - type: default-flatpaks
@@ -99,7 +101,7 @@ modules:
       - ProtonPlus: com.vysp3r.ProtonPlus
       - Lutris: net.lutris.Lutris
       - Flatseal: com.github.tchx84.Flatseal
-      #- Steam: com.valvesoftware.Steam
+      - Steam: com.valvesoftware.Steam
 
 # libvirt service
   - type: systemd
