@@ -12,7 +12,7 @@ rm /tmp/leaf-bluefin-cosign.pub
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-bluefin:latest
 ```
 
-### build localy for a testing
+### build localy for testing
 ```sh
 # Get the blue-build CLI via DistroBox
 distrobox create blue-build --image ghcr.io/blue-build/cli:latest
@@ -27,17 +27,26 @@ cd /var/tmp/leaf-bluefin
 git pull
 
 # Generate Contianerfile from the recipe.yaml
-bluebuild generate -o ./Containerfile ./recipes/recipe.yaml
+bluebuild generate -o /var/tmp/leaf-bluefin/Containerfile /var/tmp/leaf-bluefin/recipes/recipe.yaml
 
 # Build the Image using Podman
-podman build -t leaf-bluefin-test-build:latest .
+podman build -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
 
 # or Build the Image using Buildah
-buildah bud -t leaf-bluefin-test-build:latest .
+buildah bud -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
 
 # or Build the Image using Docker
-ln -s ./Containerfile ./Dockerfile # symlink Containerfile to Dockerfile for better Docker Compatibility
-docker build -t leaf-bluefin-test-build:latest .
+ln -s /var/tmp/leaf-bluefin/Containerfile /var/tmp/leaf-bluefin/Dockerfile # symlink Containerfile to Dockerfile for better Docker Compatibility
+docker build -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
+
+# Create and Run a test Container from the Test Build Image using Podman
+podman run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
+
+# or Create and Run a test Container from the Test Build Image using Docker
+docker run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
+
+# Clean up
+rm -rf /var/tmp/leaf-bluefin
 ```
 
 ### things i changed & why
