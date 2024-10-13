@@ -60,12 +60,12 @@ font-rgba-order='rgb'
 
 [org.gnome.Ptyxis]
 font-name='JetBrains Mono 18'
-interface-style='light
+interface-style='light'
 new-tab-position='last'
 cursor-shape='block'
 cursor-blink-mode='system'
 audible-bell=false
-scrollbar-policy=system'
+scrollbar-policy='system'
 toast-on-copy-clipboard=true
 
 [org.gnome.nautilus.compression]
