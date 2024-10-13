@@ -102,5 +102,12 @@ disable-external=false
 enabled=['org.gnome.Calculator.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.clocks.desktop']
 sort-order=['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Settings.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Characters.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'com.belmoussaoui.Authenticator.desktop']
 
-
-
+[org.gnome.desktop.background]
+color-shading-type='solid'
+picture-opacity=100
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/chicken.webp'
+picture-uri-dark='file:///usr/share/backgrounds/chicken.webp'
+primary-color='#5F7491'
+secondary-color='#332829'
+show-desktop-icons=false
