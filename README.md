@@ -49,7 +49,11 @@ docker build -t leaf-bluefin-test-build:latest .
 - libdvdcss: for dvd/bluray playback support
 - modular libvirtd systemd services & tuned: for better virtualisaion
 # changed
-- default settings chaged 
-
+- default settings chaged
+  - default fonts
+    - sans: 'Inter Variable 13'
+    - document: 'Inter Variable 13'
+    - monospace: 'JetBrains Mono 18'
+    - terminal: 'JetBrains Mono 18'
 
 :3
