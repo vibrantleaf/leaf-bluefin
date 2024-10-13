@@ -34,7 +34,7 @@ podman build -t leaf-bluefin-test-build:latest .
 buildah bud -t leaf-bluefin-test-build:latest .
 
 # or with docker
-ln -s ./Containerfile ./Dockerfile # symlink Containerfile to Dockerfile
+ln -s ./Containerfile ./Dockerfile # symlink Containerfile to Dockerfile for better Docker Compatibility
 docker build -t leaf-bluefin-test-build:latest .
 ```
 
