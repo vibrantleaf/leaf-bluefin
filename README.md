@@ -14,26 +14,28 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vibrantleaf/leaf-blu
 
 ### build localy for a testing
 ```sh
-# get sources
-git clone https://github.com/vibrantleaf/leaf-bluefin.git
-
-# get blue-build cli via distrobox
+# Get the blue-build CLI via DistroBox
 distrobox create blue-build --image ghcr.io/blue-build/cli:latest
 distrobox enter blue-build
 distrobox-export --bin $(which bluebuild)
-exit
+exit 0
 bluebuild completions bash | tee ~/.local/share/bash-completion/completions/bluebuild
 
-# generate Contianerfile from the recipe.yaml
+# Get the Image SourceCode
+git clone https://github.com/vibrantleaf/leaf-bluefin.git /var/tmp/leaf-bluefin
+cd /var/tmp/leaf-bluefin
+git pull
+
+# Generate Contianerfile from the recipe.yaml
 bluebuild generate -o ./Containerfile ./recipes/recipe.yaml
 
-# with podman
+# Build the Image using Podman
 podman build -t leaf-bluefin-test-build:latest .
 
-# or with buildah
+# or Build the Image using Buildah
 buildah bud -t leaf-bluefin-test-build:latest .
 
-# or with docker
+# or Build the Image using Docker
 ln -s ./Containerfile ./Dockerfile # symlink Containerfile to Dockerfile for better Docker Compatibility
 docker build -t leaf-bluefin-test-build:latest .
 ```
