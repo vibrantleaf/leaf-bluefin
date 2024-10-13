@@ -60,7 +60,6 @@ font-hinting='slight'
 font-rgba-order='rgb'
 
 [org.gnome.shell.extensions.custom-accent-colors]
-accent-color 'green'
 theme-flatpak true
 theme-gtk3 true
 theme-shell true
