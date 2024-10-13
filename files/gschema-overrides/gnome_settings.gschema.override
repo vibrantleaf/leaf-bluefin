@@ -50,12 +50,57 @@ click-action='previews'
 dock-fixed=true
 dock-position='BOTTOM'
 
-
 [org.gnome.desktop.interface]
-font-name='Inter Variable 12'
-document-font-name='Inter Variable 12'
+font-name='Inter Variable 13'
+document-font-name='Inter Variable 13'
 monospace-font-name='JetBrains Mono 18'
 
 font-antialiasing='rgba'
 font-hinting='slight'
 font-rgba-order='rgb'
+
+[org.gnome.shell.extensions.custom-accent-colors]
+accent-color 'green'
+theme-flatpak true
+theme-gtk3 true
+theme-shell true
+
+[org.gnome.shell.extensions.tiling-assistant]
+active-window-hint 1
+active-window-hint-border-size 5
+active-window-hint-color 'rgb(97,53,131)'
+active-window-hint-inner-border-size 0
+adapt-edge-tiling-to-favorite-layout false
+auto-tile @as []
+center-window @as []
+window-gap 0
+single-screen-gap 0
+screen-bottom-gap 0
+screen-left-gap 0
+screen-right-gap 0
+screen-top-gap 0
+
+[org.gnome.shell.extensions.wiggle]
+check-interval 200
+cursor-size 30
+distance-threshold 180
+draw-interval 8
+hide-cursor true
+magnify-duration 100
+radians-threshold 15
+sample-size 25
+unmagnify-delay 100
+unmagnify-duration 100
+
+[org.gnome.Ptyxis]
+font-name 'JetBrains Mono 18'
+interface-style 'light
+new-tab-position 'last'
+cursor-shape 'block'
+cursor-blink-mode 'system'
+audible-bell false
+scrollbar-policy 'system'
+toast-on-copy-clipboard true
+
+[org.gnome.nautilus.compression]
+default-compression-format 'tar.xz'
