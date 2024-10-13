@@ -59,10 +59,11 @@ font-antialiasing='rgba'
 font-hinting='slight'
 font-rgba-order='rgb'
 
-[org.gnome.shell.extensions.custom-accent-colors]
-theme-flatpak true
-theme-gtk3 true
-theme-shell true
+#[org.gnome.shell.extensions.custom-accent-colors]
+#accent-color 'green'
+#theme-flatpak true
+#theme-gtk3 true
+#theme-shell true
 
 [org.gnome.shell.extensions.tiling-assistant]
 active-window-hint 1
