@@ -66,13 +66,6 @@ font-rgba-order='rgb'
 #theme-shell true
 
 [org.gnome.shell.extensions.tiling-assistant]
-active-window-hint 1
-active-window-hint-border-size 5
-active-window-hint-color 'rgb(97,53,131)'
-active-window-hint-inner-border-size 0
-adapt-edge-tiling-to-favorite-layout false
-auto-tile @as []
-center-window @as []
 window-gap 0
 single-screen-gap 0
 screen-bottom-gap 0
