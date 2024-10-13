@@ -46,6 +46,7 @@ podman run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-b
 docker run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
 
 # Clean up
+cd ~
 rm -rf /var/tmp/leaf-bluefin
 ```
 
