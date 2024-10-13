@@ -96,3 +96,11 @@ radians-threshold=15
 sample-size=25
 unmagnify-delay=100
 unmagnify-duration=100
+
+[org.gnome.desktop.search-providers]
+disable-external=false
+enabled=['org.gnome.Calculator.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.clocks.desktop']
+sort-order=['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Settings.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Characters.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'com.belmoussaoui.Authenticator.desktop']
+
+
+
