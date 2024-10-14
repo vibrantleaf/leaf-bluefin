@@ -42,7 +42,7 @@ docker build -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
 # or Build the Immage using Blue Build CLI directly
 # via podman
 bluebuild build \
-  --platform 'linux/amd64'
+  --platform 'linux/amd64' \
   --compression-format zstd \
   --signing-driver cosign \
   --build-driver podman \
@@ -51,7 +51,7 @@ bluebuild build \
 
 # via buildah/skepeo
 bluebuild build \
-  --platform 'linux/amd64'
+  --platform 'linux/amd64' \
   --compression-format zstd \
   --signing-driver cosign \
   --build-driver buildah \
@@ -60,7 +60,7 @@ bluebuild build \
 
 # via docker
 bluebuild build \
-  --platform 'linux/amd64'
+  --platform 'linux/amd64' \
   --compression-format zstd \
   --signing-driver cosign \
   --build-driver docker \
