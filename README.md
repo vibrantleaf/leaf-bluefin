@@ -39,6 +39,35 @@ buildah bud -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
 ln -s /var/tmp/leaf-bluefin/Containerfile /var/tmp/leaf-bluefin/Dockerfile # symlink Containerfile to Dockerfile for better Docker Compatibility
 docker build -t leaf-bluefin-test-build:latest /var/tmp/leaf-bluefin
 
+# or Build the Immage using Blue Build CLI directly
+# via podman
+bluebuild build \
+  --platform 'linux/amd64'
+  --compression-format zstd \
+  --signing-driver cosign \
+  --build-driver podman \
+  --run-driver podman \
+  --inspect-driver podman
+
+# via buildah
+bluebuild build \
+  --platform 'linux/amd64'
+  --compression-format zstd \
+  --signing-driver cosign \
+  --build-driver buildah \
+  --run-driver buildah \
+  --inspect-driver skopeo
+
+# via docker
+bluebuild build \
+  --platform 'linux/amd64'
+  --compression-format zstd \
+  --signing-driver cosign \
+  --build-driver docker \
+  --run-driver docker \
+  --inspect-driver docker
+   
+
 # Create and Run a test Container from the Test Build Image using Podman
 podman run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
 
