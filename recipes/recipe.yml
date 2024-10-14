@@ -77,7 +77,7 @@ modules:
 # make sure rpmfusion firmware installed 
   - type: script
     snippets:
-      - "rpm-ostree install \*-firmware"
+      - "rpm-ostree install *-firmware"
  
 ## steam
 #  - type: rpm-ostree
