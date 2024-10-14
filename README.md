@@ -49,7 +49,7 @@ bluebuild build \
   --run-driver podman \
   --inspect-driver podman
 
-# via buildah
+# via buildah/skepeo
 bluebuild build \
   --platform 'linux/amd64'
   --compression-format zstd \
