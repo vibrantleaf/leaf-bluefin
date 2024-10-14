@@ -69,10 +69,10 @@ bluebuild build \
    
 
 # Create and Run a test Container from the Test Build Image using Podman
-podman run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
+podman run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /usr/bin/bash
 
 # or Create and Run a test Container from the Test Build Image using Docker
-docker run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /bin/bash
+docker run -it --rm --name leaf-bluefin-test-build-container leaf-bluefin-test-build:latest /usr/bin/bash
 
 # Clean up
 cd ~
