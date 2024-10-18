@@ -152,8 +152,8 @@ modules:
 # udev-rules
   - type: script
     snippets: 
-      - "git clone https://codeberg.org/fabiscafe/game-devices-udev /var/tmp/game-devices-udev"
-      - "git clone https://github.com/wget/realtek-r8152-linux/ /var/tmp/realtek-r8152-udev"
+      - "git clone https://github.com/fabiscafe/game-devices-udev.git /var/tmp/game-devices-udev"
+      - "git clone https://github.com/wget/realtek-r8152-linux.git /var/tmp/realtek-r8152-udev"
       - "cp -rfv /var/tmp/game-devices-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d"
       - "cp -rfv /var/tmp/realtek-r8152-udev/*.rules /usr/share/ublue-os/udev-rules/etc/udev/rules.d"
   - type: rpm-ostree
