@@ -87,16 +87,14 @@ modules:
 
   # flathub
   - type: default-flatpaks
-    notify: true 
+    notify: true
     system:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
-      repo-title: "Flathub (System)"
-  
-  # get flatpaks
-  - type: default-flatpaks
-    system:
-      install:
+      repo-title: "Flathub (system-wide)"
+      
+  - type: yafti
+      custom-flatpaks:
         - org.mozilla.firefox
         - org.libreoffice.libreoffice
         - org.mozilla.Thunderbird
@@ -109,7 +107,7 @@ modules:
         - com.valvesoftware.Steam
         - io.github.Foldex.AdwSteamGtk
         - dev.qwery.AddWater
-        
+
   # libvirt service
   - type: systemd
     system:
