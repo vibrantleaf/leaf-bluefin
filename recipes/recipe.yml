@@ -87,26 +87,27 @@ modules:
 
   # flathub
   - type: default-flatpaks
-    notify: true
+    notify: true 
     system:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
-      repo-title: "Flathub (system-wide)"
+      repo-title: "Flathub (System)"
       
+# install flatpaks
   - type: yafti
-      custom-flatpaks:
-        - org.mozilla.firefox
-        - org.libreoffice.libreoffice
-        - org.mozilla.Thunderbird
-        - org.localsend.localsend_app
-        - dev.geopjr.Collision
-        - org.gnome.World.Secrets
-        - com.vysp3r.ProtonPlus
-        - net.lutris.Lutris
-        - com.github.tchx84.Flatseal
-        - com.valvesoftware.Steam
-        - io.github.Foldex.AdwSteamGtk
-        - dev.qwery.AddWater
+    custom-flatpaks:
+      - FireFox: org.mozilla.firefox
+      - LibreOffice: org.libreoffice.libreoffice
+      - ThunderBird: org.mozilla.Thunderbird
+      - LocalSend: org.localsend.localsend_app
+      - Collision: dev.geopjr.Collision
+      - Secrets: org.gnome.World.Secrets
+      - ProtonPlus: com.vysp3r.ProtonPlus
+      - Lutris: net.lutris.Lutris
+      - Flatseal: com.github.tchx84.Flatseal
+      - Steam: com.valvesoftware.Steam
+      - AdwSteamGTK (GTK4/LibAdwata Themer for Steam): io.github.Foldex.AdwSteamGtk
+      - AddWater (GTK4/LibAdwata Themer for Firefox): dev.qwery.AddWater
 
   # libvirt service
   - type: systemd
