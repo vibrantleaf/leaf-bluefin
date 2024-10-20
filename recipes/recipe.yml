@@ -5,18 +5,18 @@ image-version: latest
 
 modules:
 
- # copy files to the image
+  # copy files to the image
   - type: files
     files:
       - source: system
         destination: /
 
-# setup copr & rpm repos for build
+  # setup copr & rpm repos for build
   - type: script
     scripts:
       - setup_repos.sh
       
-# removed packages
+  # removed packages
   - type: rpm-ostree
     remove:
       - gnome-shell-extension-search-light
@@ -32,7 +32,7 @@ modules:
       - docker-ce-rootless-extras
       - devpod
       
-# added packages
+  # added packages
   - type: rpm-ostree
     install:
       - gnome-shell-extension-caffeine
@@ -62,7 +62,7 @@ modules:
       - scrcpy
       - waydroid
   
-# make sure codecs are installed    
+  # make sure codecs are installed    
   - type: rpm-ostree
     install:
       - libdvdcss
@@ -74,7 +74,7 @@ modules:
       - ffmpeg
       - libva
 
-# make sure rpmfusion firmware installed 
+  # make sure rpmfusion firmware installed 
   - type: script
     snippets:
       - "rpm-ostree install *-firmware"
@@ -83,32 +83,30 @@ modules:
 #  - type: rpm-ostree
 #    install:
 #      - steam
-# ^^^^
-# remved because of dependency bug 
+# ^^^^ remved because of dependency bug 
 
-# flathub
+  # flathub
   - type: default-flatpaks
     notify: true 
     system:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
       repo-title: "Flathub (System)"
-
-# install flatpaks
-  - type: yafti
-    custom-flatpaks:
-      - FireFox: org.mozilla.firefox
-      - LibreOffice: org.libreoffice.libreoffice
-      - ThunderBird: org.mozilla.Thunderbird
-      - LocalSend: org.localsend.localsend_app
-      - Collision: dev.geopjr.Collision
-      - Secrets: org.gnome.World.Secrets
-      - ProtonPlus: com.vysp3r.ProtonPlus
-      - Lutris: net.lutris.Lutris
-      - Flatseal: com.github.tchx84.Flatseal
-      - Steam: com.valvesoftware.Steam
-
-# libvirt service
+      install:
+        - org.mozilla.firefox
+        - org.libreoffice.libreoffice
+        - org.mozilla.Thunderbird
+        - org.localsend.localsend_app
+        - dev.geopjr.Collision
+        - org.gnome.World.Secrets
+        - com.vysp3r.ProtonPlus
+        - net.lutris.Lutris
+        - com.github.tchx84.Flatseal
+        - com.valvesoftware.Steam
+        - io.github.Foldex.AdwSteamGtk
+        - dev.qwery.AddWater
+        
+  # libvirt service
   - type: systemd
     system:
       disabled:
@@ -149,7 +147,7 @@ modules:
       enabled:
         - podman.socket
 
-# udev-rules
+  # udev-rules
   - type: script
     snippets: 
       - "git clone https://github.com/fabiscafe/game-devices-udev.git /var/tmp/game-devices-udev"
@@ -161,30 +159,30 @@ modules:
       - openrgb-udev-rules
       - steam-devices
       - solaar-udev
- 
+ # justfiles
   - type: justfiles
     #validate: true
     validate: false
     include:
       - 95-setup-waydroid.just
 
-# gnome extentions
+  # gnome extentions
   - type: gnome-extensions
     install:
-      - 4655 # Date Menu Formatter
-      - 6784 # Wiggle
-      - 3733 # Tiling Assistant
-      - 5547 # Custom Accent Colors
+      - 4655
+      - 6784
+      - 3733
+      - 5547
 
-# gnome-settings
+  # gnome-settings
   - type: gschema-overrides
     include:
       - gnome_settings.gschema.override
 
-# unsetup copr & rpm repos for release
+  # unsetup copr & rpm repos for release
   - type: script
     scripts:
       - unsetup_repos.sh
 
-# sign the image
+  # sign the image
   - type: signing
