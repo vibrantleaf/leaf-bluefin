@@ -92,6 +92,10 @@ modules:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
       repo-title: "Flathub (System)"
+  
+  # get flatpaks
+  - type: default-flatpaks
+    system:
       install:
         - org.mozilla.firefox
         - org.libreoffice.libreoffice
