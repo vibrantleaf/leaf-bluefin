@@ -20,6 +20,8 @@ distrobox enter blue-build
 distrobox-export --bin $(which bluebuild)
 exit 0
 bluebuild completions bash | tee ~/.local/share/bash-completion/completions/bluebuild
+bluebuild completions fish | tee ~/.local/share/fish/generated_completions/bluebuild.fish
+#bluebuild completions zsh #idk how to add completions to zsh if you use zsh you can figure it out yourself 
 
 # Get the Image SourceCode
 git clone https://github.com/vibrantleaf/leaf-bluefin.git /var/tmp/leaf-bluefin
